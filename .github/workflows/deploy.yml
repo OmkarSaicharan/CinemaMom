@@ -7,12 +7,11 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -21,10 +20,10 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npm run build    # ensure this outputs into ./build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v6
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.PAT_GITHUB }}
+          github_token: ${{ secrets.PAT_GITHUB }}   # or GITHUB_TOKEN
           publish_dir: ./build
