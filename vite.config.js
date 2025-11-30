@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/CinemaMom/',   // important for GitHub Pages
+  base: '/CinemaMom/',   // Must match your repo name exactly
 });
