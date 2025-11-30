@@ -26,6 +26,11 @@ jobs:
       # 4. Build the React app
       - name: Build
         run: npm run build
+        
+        - name: Report something
+        run: echo "This is optional"
+        continue-on-error: true
+
 
       # 5. Deploy to GitHub Pages using PAT
       - name: Deploy to GitHub Pages
