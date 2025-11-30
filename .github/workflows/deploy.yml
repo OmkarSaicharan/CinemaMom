@@ -9,32 +9,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Setup Node.js
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      # 3. Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # 4. Build the React app
       - name: Build
         run: npm run build
-        
-        - name: Report something
-        run: echo "This is optional"
-        continue-on-error: true
 
-
-      # 5. Deploy to GitHub Pages using PAT
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v7
+        uses: peaceiris/actions-gh-pages@v6
         with:
           github_token: ${{ secrets.PAT_GITHUB }}
-          publish_dir: ./build       # React default build folder
+          publish_dir: ./build
